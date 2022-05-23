@@ -32,7 +32,7 @@
 - Sử dụng Photoshop để edit ảnh
 - Sử dụng pyxelEdit để làm map
 ### VI, Kết luận
-  Do là game đầu tay nên còn nhiều thiếu sót, game cần được cải tiến và fix nhiều lỗi hơn để chạy  
+  Do là game đầu tay nên còn nhiều thiếu sót, game cần được cải tiến và fix vài lỗi nhỏ
   
   Dự kiến phát triển:
   - Sửa lỗi va chạm sao cho tự nhiên hết có thể
