@@ -19,6 +19,10 @@ static SDL_Window * g_window = NULL;
 static SDL_Renderer * g_screen = NULL;
 static SDL_Event g_event;
 
+static Mix_Chunk* g_sound_player[2];
+static Mix_Chunk* g_sound_slime[2];
+static Mix_Chunk* g_sound_skeleton[2];
+
 const int FPS = 18;
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 640;
@@ -94,7 +98,5 @@ namespace SDLCommonFunc
     bool CheckMove(const SDL_Rect& object1, const SDL_Rect& object2);
     int CheckDirection(const SDL_Rect& object1, const SDL_Rect& object2);
 }
-
-
 
 #endif

@@ -74,7 +74,7 @@ void MainObject::set_clips()
         frame_clip[i].h = height_frame;
     }
     }
-    
+    //std::cout << start_frame <<" " << short_frame << " " << MAX_FRAME-short_frame << std::endl;
 }
 
 void MainObject::Show(SDL_Renderer* des)
@@ -229,17 +229,17 @@ void MainObject::Show(SDL_Renderer* des)
                 }
                 else
                 {
-                    delay_frame--;
+                    delay_frame--;std::cout << delay_frame << " " << std::endl;
                 }
             if(frame_ >= MAX_FRAME - short_frame - 1)
             {
-                frame_ = MAX_FRAME - short_frame-1;
+                frame_ = MAX_FRAME - short_frame-1;//std::cout <<1 <<" " << start_frame <<std::endl;
                 status_ = DEAD;
                 start_frame = 4;
             }
                 
         }
-        
+        //std::cout << frame_ << " " << start_frame << " " << check_dead_player << std::endl;;
         
         SDL_Rect renderQuad = {rect_.x, rect_.y, width_frame*RATIO_PLAYER, height_frame*RATIO_PLAYER};
         SDL_Rect* current_clip = &frame_clip[frame_];
@@ -423,7 +423,7 @@ void MainObject::CenterEntityOnMap(Map& map_data)
     else if(map_data.start_y + SCREEN_HEIGHT >= map_data.max_y)
     {
         map_data.start_y = map_data.max_y - SCREEN_HEIGHT;
-    }
+    }//std::cout << x_pos << " " << y_pos << std::endl;
 }
 
  void MainObject::CheckToMap(Map& map_data)
@@ -516,7 +516,7 @@ void MainObject::CenterEntityOnMap(Map& map_data)
     }else if(y_pos + height_frame + SIZE > map_data.max_y)
     {
         y_pos = map_data.max_y -SIZE - height_frame - 1;
-    }
+    }//std::cout << x_pos << " " << y_pos << std::endl;
 }
 
 
@@ -529,7 +529,7 @@ void MainObject::PlayerDead()
         check_hp_player = true;
 
         }
-        hp_player -= DAMAGE_TO_PLAYER;
+        hp_player -= DAMAGE_TO_PLAYER;//std::cout << hp_player << std::endl;
     }
     else
     {

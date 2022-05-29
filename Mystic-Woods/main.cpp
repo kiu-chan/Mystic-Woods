@@ -4,11 +4,16 @@
 #include "Time.h"
 #include "Monster.h"
 #include "TextObject.h"
+#include "Menu.h"
+#include "SoundsEffect.h"
+
 #undef main
 
 
-BaseObject g_background;
+//BaseObject g_background;
 TTF_Font* font_hp = NULL;
+TTF_Font* font_menu = NULL;
+SoundsEffect Sounds;
 
 bool InitData()
 {
@@ -19,7 +24,7 @@ bool InitData()
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-    g_window = SDL_CreateWindow("Mystic Woods", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    g_window = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
     if(g_window == NULL)
     {
@@ -45,15 +50,29 @@ bool InitData()
         }
 
         font_hp = TTF_OpenFont("font//hlfants1.ttf", 15);
-        if(font_hp == NULL)
+        font_menu = TTF_OpenFont("font//hlfants1.ttf", 50);
+        if(font_hp == NULL && font_menu == NULL)
         {
             success = false;
         }
+
+
+
+        if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+        {
+            success = false;
+        }
+        // g_sound_player[0] = Mix_LoadWAV("audio/player-attack.wav");
+        Sounds.addSound("player_attack", "audio/player-attack.wav");
+        // if(g_sound_player[0] == 0)
+        // {
+        //     success = false;
+        // }
     }
     return success;
 }
 
-
+/*
 bool LoadBackground()
 {
     bool ret = g_background.LoadImg("assets/background.png", g_screen);
@@ -62,11 +81,11 @@ bool LoadBackground()
     else 
         return true;
 }
-
+*/
 
 void close()
 {
-    g_background.Free();
+    //g_background.Free();
 
     SDL_DestroyRenderer(g_screen);
     g_screen = NULL;
@@ -109,8 +128,8 @@ int main(int argc, char* argv[])
     srand((int)time(0));
     if(InitData() == false)
         return -1;
-    if(LoadBackground() == false)
-        return -1;
+    /*if(LoadBackground() == false)
+        return -1;*/
     
 
     GameMap game_map;
@@ -140,8 +159,16 @@ int main(int argc, char* argv[])
      TextObject HP;
 
     bool attack = false;
-    bool is_quit;
-    is_quit = false;
+    Menu p_menu;
+
+    int ret_menu = p_menu.ShowMenu(g_screen, font_menu);
+    bool is_quit = false;
+    if(ret_menu == 1)
+    {
+        is_quit = false;
+    }
+    else
+        is_quit =  true;
     while(!is_quit)
     {
         fps.start();
@@ -158,7 +185,7 @@ int main(int argc, char* argv[])
         SDL_RenderClear(g_screen);
 
 
-        g_background.Render(g_screen, NULL);
+        //g_background.Render(g_screen, NULL);
         Map map_data = game_map.getMap();
         Map map_data1 = game_map1.getMap();
         Map collision_data = collision_map.getMap();
@@ -184,7 +211,7 @@ int main(int argc, char* argv[])
         for(int i = 0; i < monster_list.size(); i++)
             {
                 Monster* p_monster = monster_list.at(i);
-                int move_value =  rand()%9;
+                int move_value =  rand()%9;//std::cout << move_value << " ";
                 if(p_monster != NULL)
                 {
                     bool check_dead = p_monster ->Get_Dead();
@@ -219,7 +246,7 @@ int main(int argc, char* argv[])
                     p_monster -> Set_clip();
                     p_monster -> Show(g_screen, monster_data.types[i]);
                 }
-            }
+            }//std::cout << std::endl;
 
             //danh quai
         if(p_player.GetStatus() == 5)
@@ -242,6 +269,8 @@ int main(int argc, char* argv[])
                     if(check_attack)
                     {
                         p_monster -> MonsterDead();
+                        // Mix_PlayChannel(-1, g_sound_player[0], 0);
+                        Sounds.PlaySound("player_attack");
                         attack = true;
                     }
 
@@ -268,7 +297,7 @@ int main(int argc, char* argv[])
                 player_move.w = p_player.get_width_frame();
                 player_move.h = p_player.get_height_frame();
 
-                bool check_move = SDLCommonFunc::CheckMove(player_move, monster_xy);
+                bool check_move = SDLCommonFunc::CheckMove(player_move, monster_xy);//std::cout << player_move.x << " " << player_move.y << " " << monster_xy.x << " " << monster_xy.y <<std::endl;
 
                 if(check_move)
                     {

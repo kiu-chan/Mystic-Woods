@@ -741,7 +741,7 @@ void Monster::CheckToMap(Map& gMap)
     else if(y_pos + height_frame + SIZE > gMap.max_y)
     {
         y_pos = gMap.max_y -SIZE - height_frame - 1;
-    }
+    }//std::cout << x_pos << " " << y_pos << std::endl;
 
 }
 

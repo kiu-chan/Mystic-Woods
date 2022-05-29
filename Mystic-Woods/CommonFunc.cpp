@@ -13,7 +13,7 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
   int top_b = object2.y;
   int bottom_b = object2.y + object2.h;
  
- 
+  // Case 1: size object 1 < size object 2
   if (left_a > left_b && left_a < right_b)
   {
     if (top_a > top_b && top_a < bottom_b)
@@ -46,7 +46,7 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     }
   }
   
-
+  // Case 2: size object 1 < size object 2
   if (left_b > left_a && left_b < right_a)
   {
     if (top_b > top_a && top_b < bottom_a)
@@ -79,7 +79,7 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
     }
   }
  
-
+   // Case 3: size object 1 = size object 2
   if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
   {
     return true;
@@ -91,8 +91,8 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
 bool SDLCommonFunc::CheckMove(const SDL_Rect& object1, const SDL_Rect& object2)
 {
   int x = abs(object1.x - object2.x);
-  int y = abs(object1.y - object2.y);
-  float vector_to_player = sqrt(x*x + y*y);
+  int y = abs(object1.y - object2.y);//std::cout << object1.x << " " << object1.y << std::endl;
+  float vector_to_player = sqrt(x*x + y*y);//std::cout << vector_to_player << std::endl;
 
   if (vector_to_player < MIN_ATTACK_DISTANCE*SIZE)
     return true;
@@ -158,4 +158,5 @@ int SDLCommonFunc::CheckDirection(const SDL_Rect& object1, const SDL_Rect& objec
   return direction;
 }
 
-
+/*
+*/

@@ -56,7 +56,6 @@ void TextObject::SetColor(int type)
     {
         SDL_Color color = {255, 255, 255};
         text_color = color;
-
     }else if(type == BLACK_TEXT)
     {
         SDL_Color color = {0, 0, 0};
