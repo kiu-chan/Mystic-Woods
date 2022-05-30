@@ -14,6 +14,7 @@
 #include <SDL_ttf.h>
 #include "BaseObject.h"
 #include "TextObject.h"
+#include "SoundsEffect.h"
 
 static SDL_Window * g_window = NULL;
 static SDL_Renderer * g_screen = NULL;
@@ -57,7 +58,7 @@ const int SCREEN_BPP = 32;
 
 #define ATTACK_RANGE 35
 #define HP_MONSTER 100
-#define HP_PLAYER 1000
+#define HP_PLAYER 100
 #define DAMAGE_TO_MONSTER 5
 #define DAMAGE_TO_PLAYER 10
 

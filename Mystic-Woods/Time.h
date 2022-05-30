@@ -10,14 +10,9 @@ class Time
     ~Time();
 
     void start();
-    void stop();
-    void pause();
-    void unpause();
 
     int getTicks();
 
-    bool Is_Started();
-    bool Is_Paused();
 
     private:
     int start_tick;

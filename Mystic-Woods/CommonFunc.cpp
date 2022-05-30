@@ -91,8 +91,8 @@ bool SDLCommonFunc::CheckCollision(const SDL_Rect& object1, const SDL_Rect& obje
 bool SDLCommonFunc::CheckMove(const SDL_Rect& object1, const SDL_Rect& object2)
 {
   int x = abs(object1.x - object2.x);
-  int y = abs(object1.y - object2.y);//std::cout << object1.x << " " << object1.y << std::endl;
-  float vector_to_player = sqrt(x*x + y*y);//std::cout << vector_to_player << std::endl;
+  int y = abs(object1.y - object2.y);
+  float vector_to_player = sqrt(x*x + y*y);
 
   if (vector_to_player < MIN_ATTACK_DISTANCE*SIZE)
     return true;

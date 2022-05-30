@@ -741,7 +741,7 @@ void Monster::CheckToMap(Map& gMap)
     else if(y_pos + height_frame + SIZE > gMap.max_y)
     {
         y_pos = gMap.max_y -SIZE - height_frame - 1;
-    }//std::cout << x_pos << " " << y_pos << std::endl;
+    }
 
 }
 
@@ -783,4 +783,51 @@ void Monster::AttackPlayer()
         move_ = WALK_STOP;
         check_attack = false;
     }
+}
+
+void Monster::RevivalMonster()
+{
+    width_frame = 0;
+    height_frame = 0;
+    x_val = 0;
+    y_val = 0;
+    x_pos = 0;
+    y_pos = 0;
+
+    combacktime = 0;
+
+    frame = 0;
+    start_frame = 0;
+    short_frame = 0;
+    max_frame = 0;
+    max_slime_frame = 7;
+    max_skeleton_frame = 6;
+
+    // thoi gian hoi cac trang thai
+    status_time = 10;
+    time_move = TIME_MOVE;
+    revival_time = 0;
+    delay_attack = DELAY_ATTACK;
+
+    // gia tri cac trang thai
+    stop_slime_frame = 3;
+    stop_skeleton_frame = 0;
+    move_slime_frame = 1;
+    move_skeleton_frame = 0;
+    attack_slime_frame = 0;
+    attack_skeleton_frame = 1;
+    hp_slime_frame = 4;
+    hp_skeleton_frame = 3;
+    dead_slime_frame = 2;
+    dead_skeleton_frame = 1;
+    dead_monster_frame = 2;
+
+    // kiem tra cac trang thai
+    check_monster_dead = false;
+    check_hp_monster = false;
+    check_hp_frame = false;
+    check_run = false;
+    check_attack = false;
+    check_damage_monster = false;
+    hp_monster = HP_MONSTER;
 }

@@ -124,7 +124,7 @@ int Menu::ShowMenu(SDL_Renderer* des, TTF_Font* font)
           for(int i = 0; i < kMenuItemNum; i++)
         {
           if(CheckFousWithRect(xm, ym, pos_arr[i]))
-          {std::cout << i << std::endl;
+          {
             return i;
           }
         }

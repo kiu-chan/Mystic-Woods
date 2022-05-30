@@ -20,6 +20,7 @@ MainObject::MainObject()
 
     check_hp_player = false;
     check_dead_player = false;
+    check_menu_dead = false;
 
     start_attack = 0;
     check_attack = false;
@@ -74,7 +75,7 @@ void MainObject::set_clips()
         frame_clip[i].h = height_frame;
     }
     }
-    //std::cout << start_frame <<" " << short_frame << " " << MAX_FRAME-short_frame << std::endl;
+    
 }
 
 void MainObject::Show(SDL_Renderer* des)
@@ -229,17 +230,19 @@ void MainObject::Show(SDL_Renderer* des)
                 }
                 else
                 {
-                    delay_frame--;std::cout << delay_frame << " " << std::endl;
+                    delay_frame--;
                 }
             if(frame_ >= MAX_FRAME - short_frame - 1)
             {
-                frame_ = MAX_FRAME - short_frame-1;//std::cout <<1 <<" " << start_frame <<std::endl;
+                frame_ = MAX_FRAME - short_frame-1;
                 status_ = DEAD;
                 start_frame = 4;
+                check_menu_dead = true;
+                SDL_Delay(150);
             }
                 
         }
-        //std::cout << frame_ << " " << start_frame << " " << check_dead_player << std::endl;;
+        
         
         SDL_Rect renderQuad = {rect_.x, rect_.y, width_frame*RATIO_PLAYER, height_frame*RATIO_PLAYER};
         SDL_Rect* current_clip = &frame_clip[frame_];
@@ -423,7 +426,7 @@ void MainObject::CenterEntityOnMap(Map& map_data)
     else if(map_data.start_y + SCREEN_HEIGHT >= map_data.max_y)
     {
         map_data.start_y = map_data.max_y - SCREEN_HEIGHT;
-    }//std::cout << x_pos << " " << y_pos << std::endl;
+    }
 }
 
  void MainObject::CheckToMap(Map& map_data)
@@ -516,7 +519,7 @@ void MainObject::CenterEntityOnMap(Map& map_data)
     }else if(y_pos + height_frame + SIZE > map_data.max_y)
     {
         y_pos = map_data.max_y -SIZE - height_frame - 1;
-    }//std::cout << x_pos << " " << y_pos << std::endl;
+    }
 }
 
 
@@ -529,7 +532,7 @@ void MainObject::PlayerDead()
         check_hp_player = true;
 
         }
-        hp_player -= DAMAGE_TO_PLAYER;//std::cout << hp_player << std::endl;
+        hp_player -= DAMAGE_TO_PLAYER;
     }
     else
     {
@@ -545,4 +548,47 @@ void MainObject::PlayerDead()
         start_frame = 4;
         short_frame = 3;
     }
+}
+
+void MainObject::SetMenu()
+{
+    check_menu_dead = false;
+}
+
+void MainObject::RevivalPlayer()
+{
+    frame_ = 0;
+    x_pos = 0;
+    y_pos = 0;
+    x_val = 0;
+    y_val = 0;
+    width_frame = 0;
+    height_frame = 0;
+    start_frame = 0;
+    attack_frame = 2;
+
+    delay_frame = DELAY_FRAME;
+
+    hp_player = HP_PLAYER;
+
+    check_hp_player = false;
+    check_dead_player = false;
+    check_menu_dead = false;
+
+    start_attack = 0;
+    check_attack = false;
+    attack_monster.x = 0;
+    attack_monster.y = 0;
+    attack_monster.w = 0;
+    attack_monster.h = 0;
+
+    dead_frame = 4;
+
+    status_ = -1;
+    input_type_.left_ = 0;
+    input_type_.right_ = 0;
+    input_type_.down_ = 0;
+    input_type_.up_ = 0;
+    map_x_ = 0;
+    map_y_ = 0;
 }

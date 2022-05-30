@@ -54,10 +54,12 @@ class Monster : public BaseObject
     void RunToPlayer(int move_value);
     void AttackPlayer();
     void MonsterDead();
+    void RevivalMonster();
 
     bool Get_Attack() const {return check_damage_monster;}
     bool Get_Dead() const {return check_monster_dead;}
     int GetHP() const {return hp_monster;}
+    bool Get_Audio() const {return check_attack;}
 
 private:
 

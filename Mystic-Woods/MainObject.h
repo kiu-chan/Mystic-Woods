@@ -31,8 +31,10 @@ class MainObject : public BaseObject
     void DoPlayer(Map& map_data);
     void CheckToMap(Map& map_data);
     void SetMapXY(const int map_x, const int map_y) {map_x_ = map_x; map_y_ = map_y;};
+    void SetMenu();
     void CenterEntityOnMap(Map& map_data);
     void PlayerDead();
+    void RevivalPlayer();
 
     SDL_Rect GetAttackMonster() const {return attack_monster;}
     int GetStatus() const {return status_;}
@@ -41,6 +43,8 @@ class MainObject : public BaseObject
     int get_width_frame() const {return width_frame;}
     int get_height_frame() const {return height_frame;}
     int GetHP() const {return hp_player;}
+    bool GetMenuDead() const {return check_menu_dead;}
+    bool GetDeadPlayer() const {return check_dead_player;}
     
 private:
     float x_val;
@@ -63,6 +67,7 @@ private:
 
     bool check_hp_player;
     bool check_dead_player;
+    bool check_menu_dead;
 
     SDL_Rect frame_clip[MAX_FRAME];
     SDL_Rect attack_monster;

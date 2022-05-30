@@ -5,7 +5,6 @@
 #include "Monster.h"
 #include "TextObject.h"
 #include "Menu.h"
-#include "SoundsEffect.h"
 
 #undef main
 
@@ -64,6 +63,8 @@ bool InitData()
         }
         // g_sound_player[0] = Mix_LoadWAV("audio/player-attack.wav");
         Sounds.addSound("player_attack", "audio/player-attack.wav");
+        Sounds.addSound("slime_attack", "audio/slime-attack.wav");
+        Sounds.addSound("music", "audio/music-game.wav");
         // if(g_sound_player[0] == 0)
         // {
         //     success = false;
@@ -161,16 +162,39 @@ int main(int argc, char* argv[])
     bool attack = false;
     Menu p_menu;
 
+    Sounds.PlaySound("music");
+
     int ret_menu = p_menu.ShowMenu(g_screen, font_menu);
     bool is_quit = false;
-    if(ret_menu == 1)
+    if (ret_menu == 1)
     {
         is_quit = false;
     }
     else
-        is_quit =  true;
+        is_quit = true;
+
+    bool start_game = false;
     while(!is_quit)
     {
+        
+        if (start_game)
+        {
+            is_quit = !p_menu.ShowMenu(g_screen, font_menu);
+            if(!is_quit)
+            {
+                start_game = false;
+            }
+            else
+            continue;
+            p_player.RevivalPlayer();
+        }
+        else
+        {
+            bool check_dead_player = p_player.GetDeadPlayer();
+            if (check_dead_player)
+                start_game = p_player.GetMenuDead();
+        }
+
         fps.start();
         while (SDL_PollEvent(&g_event)!= 0)
         {
@@ -178,7 +202,6 @@ int main(int argc, char* argv[])
             {
                 is_quit = true;
             }
-
             p_player.HandelInputActive(g_event, g_screen);
         }
 
@@ -211,7 +234,7 @@ int main(int argc, char* argv[])
         for(int i = 0; i < monster_list.size(); i++)
             {
                 Monster* p_monster = monster_list.at(i);
-                int move_value =  rand()%9;//std::cout << move_value << " ";
+                int move_value =  rand()%9;
                 if(p_monster != NULL)
                 {
                     bool check_dead = p_monster ->Get_Dead();
@@ -246,7 +269,7 @@ int main(int argc, char* argv[])
                     p_monster -> Set_clip();
                     p_monster -> Show(g_screen, monster_data.types[i]);
                 }
-            }//std::cout << std::endl;
+            }
 
             //danh quai
         if(p_player.GetStatus() == 5)
@@ -297,12 +320,16 @@ int main(int argc, char* argv[])
                 player_move.w = p_player.get_width_frame();
                 player_move.h = p_player.get_height_frame();
 
-                bool check_move = SDLCommonFunc::CheckMove(player_move, monster_xy);//std::cout << player_move.x << " " << player_move.y << " " << monster_xy.x << " " << monster_xy.y <<std::endl;
+                bool check_move = SDLCommonFunc::CheckMove(player_move, monster_xy);
 
                 if(check_move)
                     {
                         int move_value;
-                        bool check_collision = SDLCommonFunc::CheckCollision(player_move, monster_xy);
+                        bool check_collision = p_player.GetDeadPlayer();
+                        if (!check_collision)
+                            check_collision = SDLCommonFunc::CheckCollision(player_move, monster_xy);
+                        else
+                            check_collision = false;
                         if(check_collision)
                         {
                             move_value = 0;
@@ -312,8 +339,9 @@ int main(int argc, char* argv[])
                                 p_monster -> AttackPlayer();
                                 bool check_dead_player =  p_monster -> Get_Attack();        //sat thuong player nhan vao
                                 if(check_dead_player)
-                                p_player.PlayerDead();
-
+                                    p_player.PlayerDead();
+                                if(p_monster->Get_Audio())
+                                    Sounds.PlaySound("slime_attack");
                             }
                         }
                         else
