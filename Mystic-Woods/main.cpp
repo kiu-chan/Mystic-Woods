@@ -163,7 +163,7 @@ int main(int argc, char* argv[])
     bool attack = false;
     Menu p_menu;
 
-    //Sounds.PlaySound("music");
+    Sounds.PlaySound("music");
 
     int point = 0;
 
