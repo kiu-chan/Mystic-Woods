@@ -140,7 +140,7 @@ int Menu::ShowMenu(SDL_Renderer* des, TTF_Font* font)
       }
     }
   }
-  return 1;
+  return 0;
 }
 
 void Menu::Show(SDL_Renderer* des)

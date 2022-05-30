@@ -58,7 +58,7 @@ const int SCREEN_BPP = 32;
 
 #define ATTACK_RANGE 35
 #define HP_MONSTER 100
-#define HP_PLAYER 100
+#define HP_PLAYER 300
 #define DAMAGE_TO_MONSTER 5
 #define DAMAGE_TO_PLAYER 10
 

@@ -46,6 +46,7 @@ Monster::Monster()
     check_attack = false;
     check_damage_monster = false;
     hp_monster = HP_MONSTER;
+    check_time = false;
 }
 
 Monster::~Monster()
@@ -574,9 +575,15 @@ void Monster::AutoMove(int move_value)
             short_frame = dead_skeleton_frame;
         }
         if(revival_time == 0)
-        revival_time = REVIVAL_TIME;
+        {
+            revival_time = REVIVAL_TIME;
+            check_time = true;
+        }
         else
-        revival_time--;
+        {
+            revival_time--;
+            check_time = false;
+        }
     }
     break;
     }

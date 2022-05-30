@@ -60,6 +60,7 @@ class Monster : public BaseObject
     bool Get_Dead() const {return check_monster_dead;}
     int GetHP() const {return hp_monster;}
     bool Get_Audio() const {return check_attack;}
+    bool GetTime() const {return check_time;}
 
 private:
 
@@ -108,6 +109,7 @@ private:
     bool check_attack;
     bool check_damage_monster;
     int hp_monster;
+    bool check_time;
 
     Map monster_map;
     Input input_type;

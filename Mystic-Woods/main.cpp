@@ -61,7 +61,7 @@ bool InitData()
         {
             success = false;
         }
-        // g_sound_player[0] = Mix_LoadWAV("audio/player-attack.wav");
+         //g_sound_player[0] = Mix_LoadWAV("audio/player-attack.wav");
         Sounds.addSound("player_attack", "audio/player-attack.wav");
         Sounds.addSound("slime_attack", "audio/slime-attack.wav");
         Sounds.addSound("music", "audio/music-game.wav");
@@ -157,12 +157,15 @@ int main(int argc, char* argv[])
 
     std::vector<Monster*> monster_list = MakeMonsterList(monster_data);
     //text
-     TextObject HP;
+    TextObject HP;
+    TextObject Point;
 
     bool attack = false;
     Menu p_menu;
 
-    Sounds.PlaySound("music");
+    //Sounds.PlaySound("music");
+
+    int point = 0;
 
     int ret_menu = p_menu.ShowMenu(g_screen, font_menu);
     bool is_quit = false;
@@ -173,7 +176,7 @@ int main(int argc, char* argv[])
     else
         is_quit = true;
 
-    bool start_game = false;
+    bool start_game = true;
     while(!is_quit)
     {
         
@@ -187,6 +190,7 @@ int main(int argc, char* argv[])
             else
             continue;
             p_player.RevivalPlayer();
+            point = 0;
         }
         else
         {
@@ -295,6 +299,10 @@ int main(int argc, char* argv[])
                         // Mix_PlayChannel(-1, g_sound_player[0], 0);
                         Sounds.PlaySound("player_attack");
                         attack = true;
+                        if(p_monster -> Get_Dead() && p_monster -> GetTime())
+                        {
+                            point ++;
+                        }
                     }
 
                 }
@@ -375,6 +383,14 @@ int main(int argc, char* argv[])
         HP.SetText(str_hp);
         HP.LoadFromRenderText(font_hp, g_screen);
         HP.RenderText(g_screen, x + 20, y + 20);
+
+        std::string str_point = "";
+        Point.SetColor(TextObject::RED_TEXT);
+        str_point += std::to_string(point);
+        Point.SetText(str_point);
+        Point.LoadFromRenderText(font_hp, g_screen);
+        Point.RenderText(g_screen, SCREEN_WIDTH/2, 20);
+
 
         SDL_RenderPresent(g_screen);
         int real_time =fps.getTicks();
