@@ -61,32 +61,17 @@ bool InitData()
         {
             success = false;
         }
-         //g_sound_player[0] = Mix_LoadWAV("audio/player-attack.wav");
         Sounds.addSound("player_attack", "audio/player-attack.wav");
         Sounds.addSound("slime_attack", "audio/slime-attack.wav");
         Sounds.addSound("music", "audio/music-game.wav");
-        // if(g_sound_player[0] == 0)
-        // {
-        //     success = false;
-        // }
     }
     return success;
 }
 
-/*
-bool LoadBackground()
-{
-    bool ret = g_background.LoadImg("assets/background.png", g_screen);
-    if( ret == false )
-        return false;
-    else 
-        return true;
-}
-*/
+
 
 void close()
 {
-    //g_background.Free();
 
     SDL_DestroyRenderer(g_screen);
     g_screen = NULL;
@@ -129,8 +114,6 @@ int main(int argc, char* argv[])
     srand((int)time(0));
     if(InitData() == false)
         return -1;
-    /*if(LoadBackground() == false)
-        return -1;*/
     
 
     GameMap game_map;
@@ -296,7 +279,6 @@ int main(int argc, char* argv[])
                     if(check_attack)
                     {
                         p_monster -> MonsterDead();
-                        // Mix_PlayChannel(-1, g_sound_player[0], 0);
                         Sounds.PlaySound("player_attack");
                         attack = true;
                         if(p_monster -> Get_Dead() && p_monster -> GetTime())
