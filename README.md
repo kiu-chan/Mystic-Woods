@@ -38,7 +38,7 @@
   - Quái vật tự đuổi theo người chơi khi vào phạm vi và tấn công, quái vật có thể hồi sinh theo một thời gian nhất định
   - Menu đơn giản, người chơi có thể chơi lại khi nhân vật chết
     
-<a name = "ky-thuat"/>
+<a name = "ki-thuat"/>
 ### IV, Các kỹ thuật lập trình được sử dụng
   - Sử dụng thư viện đồ họa SDL
   - Lập trình hướng đối tượng (class)
