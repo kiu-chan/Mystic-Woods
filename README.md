@@ -13,6 +13,7 @@
 * [6. Kết luận](#ket-luan)
 
 <a name="cai-dat"/>
+
 ## I, Hướng dẫn cài đặt và chạy game
   ### B1: Tải project về
   Cách 1: Trên Github, chọn Code => Download ZIP  
@@ -32,6 +33,7 @@
   
 
 <a name = "chuc-nang"/>
+
 ### III, Các chức năng của trò chơi
   - Điều khiển nhân vật di chuyển bằng các phím mũi tên và tấn công bằng phím `space`
   - Hệ thống HP, đánh quái và quái tự tấn công người chơi
@@ -39,6 +41,7 @@
   - Menu đơn giản, người chơi có thể chơi lại khi nhân vật chết
     
 <a name = "ki-thuat"/>
+
 ### IV, Các kỹ thuật lập trình được sử dụng
   - Sử dụng thư viện đồ họa SDL
   - Lập trình hướng đối tượng (class)
@@ -47,11 +50,13 @@
   - Hệ thống tile-map nhiều lớp xếp chồng lên nhau và có những chức năng riêng (collision, monster, map)
 
 <a name = "ho-tro"/>
+
 ### V, Hỗ trợ
 - Sử dụng Photoshop để edit ảnh
 - Sử dụng pyxelEdit để làm map
 
 <a name = "ket-luan"/>
+
 ### VI, Kết luận
   Do là game đầu tay nên còn nhiều thiếu sót, game cần được cải tiến và fix vài lỗi nhỏ
   
