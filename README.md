@@ -1,5 +1,18 @@
 # Mystic Woods
 
+* Họ tên: Hoàng Bảo Khanh
+* Mã sinh viên: 21020342
+* Lớp môn học: INT2215 1, nhóm 8
+
+##  Mục lục
+* [1. Hướng dẫ cài đặt và chạy game](#cai-dat)
+* [2. Mô tả chung về trò chơi](#mo-ta)
+* [3. Các chức năng của trò chơi](#chuc-nang)
+* [4. Các kĩ thuật lập trình được sử dụng](#ki-thuat)
+* [5. Hỗ trợ](#ho-tro)
+* [6. Kết luận](#ket-luan)
+
+<a name="cai-dat"/>
 ## I, Hướng dẫn cài đặt và chạy game
   ### B1: Tải project về
   Cách 1: Trên Github, chọn Code => Download ZIP  
@@ -10,28 +23,35 @@
   VD: C:\Program Files (x86)\GnuWin32\bin 
   ### B3: Chạy game
   Mở terminal tại thư mục chứa project, sử dụng lệnh `mingw32-make` và `.\main` để chạy game
+  
+ <a name="mo-ta"/>
 ## II, Mô tả chung về trò chơi
   **Thể loại:** `Sinh tồn`, `phiêu lưu`
   
   Game sinh tồn, phiêu lưu trong thế giới 2D có thể di chuyển đánh quái.
   
 
-
+<a name = "chuc-nang"/>
 ### III, Các chức năng của trò chơi
   - Điều khiển nhân vật di chuyển bằng các phím mũi tên và tấn công bằng phím `space`
   - Hệ thống HP, đánh quái và quái tự tấn công người chơi
   - Quái vật tự đuổi theo người chơi khi vào phạm vi và tấn công, quái vật có thể hồi sinh theo một thời gian nhất định
   - Menu đơn giản, người chơi có thể chơi lại khi nhân vật chết
     
+<a name = "ky-thuat"/>
 ### IV, Các kỹ thuật lập trình được sử dụng
   - Sử dụng thư viện đồ họa SDL
   - Lập trình hướng đối tượng (class)
   - Con trỏ, cấp phát động
   - Sử dụng các thuật toán cơ bản như thuật toán xử lý va chạm, animation,.... Ngoài ra em còn tự tìm hiểu và phát triển thêm thuật toán giúp quái tự động di chuyển, thuật toán đuổi theo và tấn công người chơi khi vào phạm vi(Sử dụng vector trong hệ toạ độ).
   - Hệ thống tile-map nhiều lớp xếp chồng lên nhau và có những chức năng riêng (collision, monster, map)
+
+<a name = "ho-tro"/>
 ### V, Hỗ trợ
 - Sử dụng Photoshop để edit ảnh
 - Sử dụng pyxelEdit để làm map
+
+<a name = "ket-luan"/>
 ### VI, Kết luận
   Do là game đầu tay nên còn nhiều thiếu sót, game cần được cải tiến và fix vài lỗi nhỏ
   
