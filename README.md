@@ -1,4 +1,5 @@
 # Mystic Woods
+<a name="ve-dau-trang"/>
 
 * Họ tên: Hoàng Bảo Khanh
 * Mã sinh viên: 21020342
@@ -26,10 +27,18 @@
   Mở terminal tại thư mục chứa project, sử dụng lệnh `mingw32-make` và `.\main` để chạy game
   
  <a name="mo-ta"/>
+
 ## II, Mô tả chung về trò chơi
   **Thể loại:** `Sinh tồn`, `phiêu lưu`
   
+  [Video minh hoạ](https://youtu.be/tB6vfdWeKW8)
   Game sinh tồn, phiêu lưu trong thế giới 2D có thể di chuyển đánh quái.
+
+  Người chơi hoá thân vào nhân vật trong game, di chuyển quanh bản đồ và tấn công quái vật để kiếm số điểm cao nhất
+
+  Người chơi có lượng máu tối đa là 300 và sẽ chết khi lượng máu trở về 0. Tốc độ di chuyển và sát thương của người chơi cao hơn quái vật
+
+  Tiêu diệt một con quái vật sẽ được thêm 1 điểm
   
 
 <a name = "chuc-nang"/>
@@ -67,4 +76,4 @@
   - Thêm nhiều màn chơi và hệ thống level
   - Thêm boss và item
  
-
+[về đầu trang](#ve-dau-trang)
