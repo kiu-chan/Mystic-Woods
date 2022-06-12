@@ -71,7 +71,6 @@
   
   Dự kiến phát triển:
   - Sửa lỗi va chạm sao cho tự nhiên hết có thể
-  - Thêm menu khi vào game và khi chết có thể chơi lại 
   - Lưu lại điểm và tiến trình
   - Thêm nhiều màn chơi và hệ thống level
   - Thêm boss và item
