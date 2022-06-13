@@ -76,7 +76,7 @@
   - Thêm nhiều màn chơi và hệ thống level
   - Thêm boss và item
 
- <a name = "tham-khao"/)
+ <a name = "tham-khao"/>
     
  ### VII, Tham khảo
   - [Hướng dẫn](https://www.youtube.com/watch?v=q1WzniyeGTU&list=PLR7NDiX0QsfTIEQUeYCfc2MyCquX0ig9V)
