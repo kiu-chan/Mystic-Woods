@@ -6,7 +6,7 @@
 * Lớp môn học: INT2215 1, nhóm 8
 
 ##  Mục lục
-* [1. Hướng dẫ cài đặt và chạy game](#cai-dat)
+* [1. Hướng dẫn cài đặt và chạy game](#cai-dat)
 * [2. Mô tả chung về trò chơi](#mo-ta)
 * [3. Các chức năng của trò chơi](#chuc-nang)
 * [4. Các kĩ thuật lập trình được sử dụng](#ki-thuat)
