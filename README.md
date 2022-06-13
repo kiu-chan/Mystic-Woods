@@ -75,4 +75,9 @@
   - Thêm nhiều màn chơi và hệ thống level
   - Thêm boss và item
  
+ ### VII, Tham khảo
+  - [Hướng dẫn](https://www.youtube.com/watch?v=q1WzniyeGTU&list=PLR7NDiX0QsfTIEQUeYCfc2MyCquX0ig9V))
+  - [Hướng dẫn 2](https://www.youtube.com/watch?v=QQzAHcojEKg&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx)
+  - [Đồ hoạ (nội dung chính)](https://game-endeavor.itch.io/mystic-woods)
+  - [Làm map](https://www.youtube.com/watch?v=5f-g87aGbBc)
 [về đầu trang](#ve-dau-trang)
